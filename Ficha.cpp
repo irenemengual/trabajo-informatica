@@ -5,6 +5,7 @@ Ficha::Ficha() {
 	rojo = verde = azul = 1;
 	ocupada = false;
 	marca = false;
+	next = false;
 
 }
 

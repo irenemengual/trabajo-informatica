@@ -37,8 +37,6 @@ void Reina::Dibuja() {
 	glEnd();
 	glEnable(GL_LIGHTING);
 
-
-
 };
 int Reina::GetPosicionX() {
 	return  x;

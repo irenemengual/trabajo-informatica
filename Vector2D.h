@@ -6,7 +6,7 @@ public: //atributos
 	int i;
 	int j;
 public: //métodos
-	 Vector2D(int xv = 0, int yv = 0);
+	Vector2D(int xv = 0, int yv = 0);
 	virtual ~Vector2D();
 	Vector2D restador();
 	Vector2D sumador();

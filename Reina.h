@@ -1,9 +1,9 @@
-#pragma once
 
 #pragma once
+
 #include "math.h"
 #include "glut.h"
-class Reina
+class Reina 
 {
 private:
 	float x;

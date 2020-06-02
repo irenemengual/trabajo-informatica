@@ -1,30 +1,19 @@
 #include <ETSIDI.h>
-
-#include <stdio.h>      /* printf */
-
+#include <stdio.h>     
 #include "glut.h"
-
 #include "Inicio.h"
 
 Inicio inicio; 
 
-//los callback, funciones que seran llamadas automaticamente por la glut
-//cuando sucedan eventos
-//NO HACE FALTA LLAMARLAS EXPLICITAMENTE
 void OnDraw(void); //esta funcion sera llamada para dibujar
 void OnTimer(int value); //esta funcion sera llamada cuando transcurra una temporizacion
 void OnKeyboardDown(unsigned char key, int x, int y); //cuando se pulse una tecla
-//void ControlMovimientoRaton(GLsizei x, GLsizei y);
 void onMouse(int button, int state, int x, int y);
-
-
 
 int main(int argc,char* argv[])
 {
-	//musica de fondo
+	//Se inicializa la música que sonará a lo largo del programa
 	//ETSIDI::playMusica("musica.mp3", true);
-	//Inicializar el gestor de ventanas GLUT
-	//y crear la ventana
 	glutInit(&argc, argv);
 	glutInitWindowSize(800,600);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
@@ -42,11 +31,8 @@ int main(int argc,char* argv[])
 	glutDisplayFunc(OnDraw);
 	glutTimerFunc(25,OnTimer,0);//le decimos que dentro de 25ms llame 1 vez a la funcion OnTimer()
 	glutKeyboardFunc(OnKeyboardDown);
-	//glutMotionFunc(ControlMovimientoRaton);
 	glutMouseFunc(onMouse);
 
-	//mundo.Inicializa();______________________________________
-		
 	//pasarle el control a GLUT,que llamara a los callbacks
 	glutMainLoop();	
 
@@ -63,14 +49,14 @@ void OnDraw(void)
 	glLoadIdentity();
 	
 	inicio.dibuja();
+	/////////
+	
+	
 
-
-	//no borrar esta linea ni poner nada despues
 	glutSwapBuffers();
 }
 void OnKeyboardDown(unsigned char key, int x_t, int y_t)
 {
-	//poner aqui el código de teclado
 	inicio.tecla(key);
 
 
@@ -79,21 +65,15 @@ void OnKeyboardDown(unsigned char key, int x_t, int y_t)
 
 void OnTimer(int value)
 {
-//poner aqui el código de animacion
+
+	inicio.RotarOjo();
 	inicio.Mueve();
 	
-	//no borrar estas lineas
+
 	glutTimerFunc(25,OnTimer,0);
 	glutPostRedisplay();
 }
 
-/*void ControlMovimientoRaton(GLsizei x, GLsizei y)
-{
-	printf("La posicio del raton:\n");
-	printf(" X = %f\n", (GLfloat)x);
-	printf(" Y = %f\n", (GLfloat)y);
-}
-*/
 
 void onMouse(int button, int state, int x, int y)
 {
